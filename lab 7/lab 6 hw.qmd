@@ -1,0 +1,25 @@
+---
+title: "lab 6 homework"
+author: "Nicholas Pacia"
+format: pdf
+---
+prerequisites for running example
+```{r}
+library("bio3d")
+```
+
+creating function that accepts a string for the filename, will take a set of data from the file, and output a plot of the selected data.
+```{r}
+plotchain <- function(name = "file"){
+  data <- read.pdb(name)
+  data_chain <- trim.pdb(data, chain = "A", elety = "CA")
+  data_new <- data_chain$atom$b
+  plotb3(data_new, sse = data_chain, typ = "l", ylab = "Bfactor")
+}
+```
+
+running example
+```{r}
+plotchain("4AKE")
+```
+

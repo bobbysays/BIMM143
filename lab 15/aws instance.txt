@@ -1,0 +1,7 @@
+instanceid (i-07d19c7604c6cbb8c)
+
+key npacia.pem
+
+cmd ssh -i "npacia.pem" ubuntu@ec2-34-220-178-139.us-west-2.compute.amazonaws.com
+
+ubuntu@ip-172-31-22-161

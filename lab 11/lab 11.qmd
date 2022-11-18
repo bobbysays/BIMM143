@@ -1,0 +1,47 @@
+---
+title: "Lab 11"
+author: "Nicholas Pacia"
+format: pdf
+---
+
+# Section 4 Population Scale Analysis
+
+First download the file fromm https://bioboot.github.io/bggn213_W19/class-material/rs8067378_ENSG00000172057.6.txt into the project directory. Then read the file.
+```{r}
+url <- "rs8067378_ENSG00000172057.6.txt"
+data <- read.table(url)
+head(data)
+```
+
+>Q13 What is the sample size for each genotype and their median expression levels?
+
+```{r}
+nrow(data) #total size of sample
+table(data$geno) #sample size of each genotype
+```
+```{r}
+#separating the genotypes into individual vectors to find median expression
+aa <- data[data$geno == "A/A",]
+ag <- data[data$geno == "A/G",]
+gg <- data[data$geno == "G/G",]
+```
+```{r}
+#two different ways of getting median expression if already separated
+median(aa$exp)
+median(data[data$geno == "A/G", "exp"])
+median(gg$exp)
+```
+
+
+```{r}
+library(ggplot2)
+```
+```{r}
+ggplot(data, aes(geno,exp, fill = geno)) +
+  geom_boxplot(notch = T) 
+```
+
+>Q14 What could you infer from the realtive expression value between A/A and G/G displayed in this plot? does the SNP effect expression of ORMDL3
+
+A/A has a higher expression than G/G so the G/G genotype has reduced expression of this gene. Depending on the SNP, the expression of ORMDL3 changes; it is higher for A's and lower for G's.
+

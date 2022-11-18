@@ -1,0 +1,20 @@
+Q. What does the star character accomplish here? Ask Barry, or your class neighbor, if you are not sure!
+
+* ignores everything before so it will run with anything that has an instance of what comes after.
+
+Q. How many sequences are in this mouse.1.protein.faa file? Hint: Try using grep to figure this out…
+
+65154
+
+Q. What happens if you run the above command without the > mm-first.fa part?
+
+will print out the first 11 elements from the file without writing to another output file.
+
+Q. What happens if you were to use two ‘>’ symbols (i.e. >> mm-first.fa)?
+
+two >> will overwrite any text within the file.
+
+Q.How would you determine how many sequences are in the mm-second.fa file?
+
+96
+
