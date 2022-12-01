@@ -3,8 +3,8 @@ UC San Diego
 
 Here is a portfolio of my work for [BIMM143](https://bioboot.github.io/bimm143_F22/).
 
-- **Class 5**: [Data Exploration and Visualization in R](https://github.com/bobbysays/BIMM143/blob/main/lab5/ckass5.md) | [Code](https://github.com/bobbysays/BIMM143/blob/main/lab5/ckass5.qmd)
-- **Class 6**: [Why, When and How of Writing Your Own R Functions](https://github.com/bobbysays/BIMM143/blob/main/lab%206/lab%206.md) | [Code](https://github.com/bobbysays/BIMM143/blob/main/lab%206/lab%206.qmd)
+- **Class 5**: [Data Exploration and Visualization in R](https://github.com/bobbysays/BIMM143/blob/main/lab5/ckass5.md) | <div dir=rtl>[Code](https://github.com/bobbysays/BIMM143/blob/main/lab5/ckass5.qmd)
+- **Class 6**: [Why, When and How of Writing Your Own R Functions](https://github.com/bobbysays/BIMM143/blob/main/lab%206/lab%206.md) | <div dir=rtl> [Code](https://github.com/bobbysays/BIMM143/blob/main/lab%206/lab%206.qmd)
 - **Class 7**: [Introduction to Machine Learning for Bioinformatics 1](https://github.com/bobbysays/BIMM143/blob/main/lab%207/lab%207.md) | [Code](https://github.com/bobbysays/BIMM143/blob/main/lab%207/lab%207.qmd)
 - **Class 8**: [Unsupervised Learning Mini-project](https://github.com/bobbysays/BIMM143/blob/main/lab%208/lab%208.md) | [Code](https://github.com/bobbysays/BIMM143/blob/main/lab%208/lab%208.qmd)
 - **Class 9**: [Structural Bioinformatics (AlphaFold)](https://github.com/bobbysays/BIMM143/blob/main/lab%209/lab%209.md) | [Code](https://github.com/bobbysays/BIMM143/blob/main/lab%209/lab%209.qmd)
