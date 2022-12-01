@@ -1,0 +1,192 @@
+---
+title: "lab9"
+author: "Nicholas Pacia"
+format: pdf
+---
+
+## RCSB Protein Data Bank
+
+This database has mostly x-ray crystalography. Class skipped Q1-3 because the site was too slow.
+
+> Q1: What percentage of structures in the PDB are solved by X-Ray and Electron Microscopy.
+
+```{r}
+169794/196779*100
+```
+
+> Q2: What proportion of structures in the PDB are protein?
+
+```{r}
+(171221+10444+10876)/196779
+```
+
+> Q3: Type HIV in the PDB website search box on the home page and determine how many HIV-1 protease structures are in the current PDB?
+
+4703 structures
+
+> Q4: Water molecules normally have 3 atoms. Why do we see just one atom per water molecule in this structure?
+
+We only see one atom because it only displays the oxygen atom because the hydrogen atoms are too small to be imaged.
+
+> Q5: There is a critical "conserved" water molecule in the binding site. Can you identify this water molecule? What residue number does this water molecule have?
+
+The water molecule has a residue number of 308
+
+> Q6: Generate and save a figure clearly showing the two distinct chains of HIV-protease along with the ligand. You might also consider showing the catalytic residues ASP 25 in each chain (we recommend "Ball & Stick" for these side-chains). Add this figure to your Quarto document. Discussion Topic: Can you think of a way in which indinavir, or even larger ligands and substrates, could enter the binding site?
+
+![HIV-Pr structure from 1hsg](1HSG%20pt3.png)
+A conformational change can allow for a larger ligand and substrates to enter the binding site. 
+
+# Intro to Bio3D in R
+Bio3D is an R package for structural bioinformatics. Bring in bio3d package.
+```{r}
+library(bio3d)
+```
+
+Read PDB file from online repository.
+```{r}
+pdb <- read.pdb("1hsg")
+pdb
+```
+
+> Q7: How many amino acid residues are there in this pdb object?
+
+198 amino acid residues
+
+> Q8: Name one of the two non-protein residues?
+
+HOH, also MK1
+
+> Q9: How many protein chains are in this structure?
+
+2 chains
+
+Look at attributes and head of atom
+```{r}
+attributes(pdb)
+head(pdb$atom)
+```
+
+# Comparative Structure Analysis of Adenylate Kinase
+Install necessary packages
+```{r}
+#install.packages("ggrepel")
+#install.packages("devtools")
+#install.packages("BiocManager")
+#BiocManager::install("msa")
+#devtools::install_bitbucket("Grantlab/bio3d-view")
+```
+
+>Q10. Which of the packages above is found only on BioConductor and not CRAN? 
+
+msa
+
+>Q11. Which of the above packages is not found on BioConductor or CRAN?: 
+
+bio3d-view
+
+>Q12. True or False? Functions from the devtools package can be used to install packages from GitHub and BitBucket? 
+
+TRUE
+
+Retrieve ADK data. We will start with PDB id 1AKE.
+```{r}
+aa <- get.seq("1ake_A")
+aa
+```
+
+>Q13. How many amino acids are in this sequence, i.e. how long is this sequence?
+
+214
+
+We can use this sequence to BLAST the PDB and find similar sequences and structures.
+```{r}
+b <- blast.pdb(aa) #takes a very long time to search
+```
+We can plot a summary of search results or list out top hits.
+```{r}
+hits <- plot(b)
+head(hits$pdb.id)
+
+#hits <- NULL
+#hits$pdb.id <- c('1AKE_A','6S36_A','6RZE_A','3HPR_A','1E4V_A','5EJE_A','1E4Y_A','3X2S_A','6HAP_A','6HAM_A','4K46_A','3GMT_A','4PZL_A')
+```
+Download related PDB files from online database.
+```{r}
+files <- get.pdb(hits$pdb.id, path="pdbs", split=TRUE, gzip=TRUE)
+```
+Align related PDBs
+```{r}
+pdbs <- pdbaln(files, fit = TRUE, exefile="msa")
+```
+Plot schematic alignment.
+```{r}
+ids <- basename.pdb(pdbs$id) #create vector of PDB codes for axis titles
+#plot(pdbs, labels=ids) #error related to figure margins too large
+```
+
+Annotate collected PDB structures.
+```{r}
+anno <- pdb.annotate(ids)
+unique(anno$source)
+anno
+```
+
+## PCA
+
+Perform PCA and plot.
+```{r}
+pc.xray <- pca(pdbs)
+plot(pc.xray)
+```
+
+`rmsd()` will calculate all pairwise RMSD values of the structural ensemble for cluster analysis based on pairwise structural deviation.
+```{r}
+# Calculate RMSD
+rd <- rmsd(pdbs)
+
+# Structure-based clustering
+hc.rd <- hclust(dist(rd))
+grps.rd <- cutree(hc.rd, k=3)
+
+plot(pc.xray, 1:2, col="grey50", bg=grps.rd, pch=21, cex=1)
+```
+
+## Optional visualization
+
+```{r}
+# Visualize first principal component
+pc1 <- mktrj(pc.xray, pc=1, file="pc_1.pdb")
+```
+Upload this file into molstar for 3D animation.
+
+
+```{r}
+#Plotting results with ggplot2
+library(ggplot2)
+library(ggrepel)
+
+df <- data.frame(PC1=pc.xray$z[,1], 
+                 PC2=pc.xray$z[,2], 
+                 col=as.factor(grps.rd),
+                 ids=ids)
+
+p <- ggplot(df) + 
+  aes(PC1, PC2, col=col, label=ids) +
+  geom_point(size=2) +
+  geom_text_repel(max.overlaps = 20) +
+  theme(legend.position = "none")
+p
+```
+
+## Normal Mode Analysis
+
+```{r}
+# NMA of all structures
+modes <- nma(pdbs)
+plot(modes, pdbs, col=grps.rd)
+```
+
+>Q14. What do you note about this plot? Are the black and colored lines similar or different? Where do you think they differ most and why?
+
+This plot groups the different proteins by which are most similar to each other, showing 3 different groups: red, green, and black. The colored lines are more similar to each other than they are to the black lines. They differ most in the 2 nucleotide-binding site regions where there are the highest peaks because they are flexible based on nucleotide binding.

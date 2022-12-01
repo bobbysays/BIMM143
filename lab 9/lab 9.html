@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.1.189">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Nicholas Pacia">
+
+<title>lab 9</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="lab 9_files/libs/clipboard/clipboard.min.js"></script>
+<script src="lab 9_files/libs/quarto-html/quarto.js"></script>
+<script src="lab 9_files/libs/quarto-html/popper.min.js"></script>
+<script src="lab 9_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="lab 9_files/libs/quarto-html/anchor.min.js"></script>
+<link href="lab 9_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="lab 9_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="lab 9_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="lab 9_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="lab 9_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">lab 9</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Nicholas Pacia </p>
+          </div>
+  </div>
+    
+    
+  </div>
+  
+
+</header>
+
+<section id="rcsb-protein-data-bank" class="level2">
+<h2 class="anchored" data-anchor-id="rcsb-protein-data-bank">RCSB Protein Data Bank</h2>
+<p>This database has mostly x-ray crystalography. Class skipped Q1-3 because the site was too slow.</p>
+<blockquote class="blockquote">
+<p>Q1: What percentage of structures in the PDB are solved by X-Ray and Electron Microscopy.</p>
+</blockquote>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dv">169794</span><span class="sc">/</span><span class="dv">196779</span><span class="sc">*</span><span class="dv">100</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 86.28665</code></pre>
+</div>
+</div>
+<blockquote class="blockquote">
+<p>Q2: What proportion of structures in the PDB are protein?</p>
+</blockquote>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>(<span class="dv">171221</span><span class="sc">+</span><span class="dv">10444</span><span class="sc">+</span><span class="dv">10876</span>)<span class="sc">/</span><span class="dv">196779</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.9784631</code></pre>
+</div>
+</div>
+<blockquote class="blockquote">
+<p>Q3: Type HIV in the PDB website search box on the home page and determine how many HIV-1 protease structures are in the current PDB?</p>
+</blockquote>
+<p>4703 structures</p>
+<blockquote class="blockquote">
+<p>Q4: Water molecules normally have 3 atoms. Why do we see just one atom per water molecule in this structure?</p>
+</blockquote>
+<p>We only see one atom because it only displays the oxygen atom because the hydrogen atoms are too small to be imaged.</p>
+<blockquote class="blockquote">
+<p>Q5: There is a critical “conserved” water molecule in the binding site. Can you identify this water molecule? What residue number does this water molecule have?</p>
+</blockquote>
+<p>The water molecule has a residue number of 308</p>
+<blockquote class="blockquote">
+<p>Q6: Generate and save a figure clearly showing the two distinct chains of HIV-protease along with the ligand. You might also consider showing the catalytic residues ASP 25 in each chain (we recommend “Ball &amp; Stick” for these side-chains). Add this figure to your Quarto document. Discussion Topic: Can you think of a way in which indinavir, or even larger ligands and substrates, could enter the binding site?</p>
+</blockquote>
+<p><img src="1HSG%20pt3.png" class="img-fluid" alt="HIV-Pr structure from 1hsg"> A conformational change can allow for a larger ligand and substrates to enter the binding site.</p>
+</section>
+<section id="intro-to-bio3d-in-r" class="level1">
+<h1>Intro to Bio3D in R</h1>
+<p>Bio3D is an R package for structural bioinformatics. Bring in bio3d package.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(bio3d)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Read PDB file from online repository.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>pdb <span class="ot">&lt;-</span> <span class="fu">read.pdb</span>(<span class="st">"1hsg"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Note: Accessing on-line PDB file</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>pdb</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+ Call:  read.pdb(file = "1hsg")
+
+   Total Models#: 1
+     Total Atoms#: 1686,  XYZs#: 5058  Chains#: 2  (values: A B)
+
+     Protein Atoms#: 1514  (residues/Calpha atoms#: 198)
+     Nucleic acid Atoms#: 0  (residues/phosphate atoms#: 0)
+
+     Non-protein/nucleic Atoms#: 172  (residues: 128)
+     Non-protein/nucleic resid values: [ HOH (127), MK1 (1) ]
+
+   Protein sequence:
+      PQITLWQRPLVTIKIGGQLKEALLDTGADDTVLEEMSLPGRWKPKMIGGIGGFIKVRQYD
+      QILIEICGHKAIGTVLVGPTPVNIIGRNLLTQIGCTLNFPQITLWQRPLVTIKIGGQLKE
+      ALLDTGADDTVLEEMSLPGRWKPKMIGGIGGFIKVRQYDQILIEICGHKAIGTVLVGPTP
+      VNIIGRNLLTQIGCTLNF
+
++ attr: atom, xyz, seqres, helix, sheet,
+        calpha, remark, call</code></pre>
+</div>
+</div>
+<blockquote class="blockquote">
+<p>Q7: How many amino acid residues are there in this pdb object?</p>
+</blockquote>
+<p>198 amino acid residues</p>
+<blockquote class="blockquote">
+<p>Q8: Name one of the two non-protein residues?</p>
+</blockquote>
+<p>HOH, also MK1</p>
+<blockquote class="blockquote">
+<p>Q9: How many protein chains are in this structure?</p>
+</blockquote>
+<p>2 chains</p>
+<p>Look at attributes and head of atom</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">attributes</span>(pdb)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$names
+[1] "atom"   "xyz"    "seqres" "helix"  "sheet"  "calpha" "remark" "call"  
+
+$class
+[1] "pdb" "sse"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(pdb<span class="sc">$</span>atom)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  type eleno elety  alt resid chain resno insert      x      y     z o     b
+1 ATOM     1     N &lt;NA&gt;   PRO     A     1   &lt;NA&gt; 29.361 39.686 5.862 1 38.10
+2 ATOM     2    CA &lt;NA&gt;   PRO     A     1   &lt;NA&gt; 30.307 38.663 5.319 1 40.62
+3 ATOM     3     C &lt;NA&gt;   PRO     A     1   &lt;NA&gt; 29.760 38.071 4.022 1 42.64
+4 ATOM     4     O &lt;NA&gt;   PRO     A     1   &lt;NA&gt; 28.600 38.302 3.676 1 43.40
+5 ATOM     5    CB &lt;NA&gt;   PRO     A     1   &lt;NA&gt; 30.508 37.541 6.342 1 37.87
+6 ATOM     6    CG &lt;NA&gt;   PRO     A     1   &lt;NA&gt; 29.296 37.591 7.162 1 38.40
+  segid elesy charge
+1  &lt;NA&gt;     N   &lt;NA&gt;
+2  &lt;NA&gt;     C   &lt;NA&gt;
+3  &lt;NA&gt;     C   &lt;NA&gt;
+4  &lt;NA&gt;     O   &lt;NA&gt;
+5  &lt;NA&gt;     C   &lt;NA&gt;
+6  &lt;NA&gt;     C   &lt;NA&gt;</code></pre>
+</div>
+</div>
+</section>
+<section id="comparative-structure-analysis-of-adenylate-kinase" class="level1">
+<h1>Comparative Structure Analysis of Adenylate Kinase</h1>
+<p>Install necessary packages</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages("ggrepel")</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages("devtools")</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages("BiocManager")</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co">#BiocManager::install("msa")</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="co">#devtools::install_bitbucket("Grantlab/bio3d-view")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<blockquote class="blockquote">
+<p>Q10. Which of the packages above is found only on BioConductor and not CRAN?</p>
+</blockquote>
+<p>msa</p>
+<blockquote class="blockquote">
+<p>Q11. Which of the above packages is not found on BioConductor or CRAN?:</p>
+</blockquote>
+<p>bio3d-view</p>
+<blockquote class="blockquote">
+<p>Q12. True or False? Functions from the devtools package can be used to install packages from GitHub and BitBucket?</p>
+</blockquote>
+<p>TRUE</p>
+<p>Retrieve ADK data. We will start with PDB id 1AKE.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>aa <span class="ot">&lt;-</span> <span class="fu">get.seq</span>(<span class="st">"1ake_A"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in get.seq("1ake_A"): Removing existing file: seqs.fasta</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Fetching... Please wait. Done.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>aa</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>             1        .         .         .         .         .         60 
+pdb|1AKE|A   MRIILLGAPGAGKGTQAQFIMEKYGIPQISTGDMLRAAVKSGSELGKQAKDIMDAGKLVT
+             1        .         .         .         .         .         60 
+
+            61        .         .         .         .         .         120 
+pdb|1AKE|A   DELVIALVKERIAQEDCRNGFLLDGFPRTIPQADAMKEAGINVDYVLEFDVPDELIVDRI
+            61        .         .         .         .         .         120 
+
+           121        .         .         .         .         .         180 
+pdb|1AKE|A   VGRRVHAPSGRVYHVKFNPPKVEGKDDVTGEELTTRKDDQEETVRKRLVEYHQMTAPLIG
+           121        .         .         .         .         .         180 
+
+           181        .         .         .   214 
+pdb|1AKE|A   YYSKEAEAGNTKYAKVDGTKPVAEVRADLEKILG
+           181        .         .         .   214 
+
+Call:
+  read.fasta(file = outfile)
+
+Class:
+  fasta
+
+Alignment dimensions:
+  1 sequence rows; 214 position columns (214 non-gap, 0 gap) 
+
++ attr: id, ali, call</code></pre>
+</div>
+</div>
+<blockquote class="blockquote">
+<p>Q13. How many amino acids are in this sequence, i.e.&nbsp;how long is this sequence?</p>
+</blockquote>
+<p>214</p>
+<p>We can use this sequence to BLAST the PDB and find similar sequences and structures.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="fu">blast.pdb</span>(aa)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> Searching ... please wait (updates every 5 seconds) RID = NG9GNH8J016 
+ .
+ Reporting 98 hits</code></pre>
+</div>
+</div>
+<p>We can plot a summary of search results or list out top hits.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>hits <span class="ot">&lt;-</span> <span class="fu">plot</span>(b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  * Possible cutoff values:    197 -3 
+            Yielding Nhits:    16 98 
+
+  * Chosen cutoff value of:    197 
+            Yielding Nhits:    16 </code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="lab-9_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(hits<span class="sc">$</span>pdb.id)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "1AKE_A" "4X8M_A" "6S36_A" "6RZE_A" "4X8H_A" "3HPR_A"</code></pre>
+</div>
+</div>
+<p>Download related PDB files.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>files <span class="ot">&lt;-</span> <span class="fu">get.pdb</span>(hits<span class="sc">$</span>pdb.id, <span class="at">path=</span><span class="st">"pdbs"</span>, <span class="at">split=</span><span class="cn">TRUE</span>, <span class="at">gzip=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+  |                                                                            
+  |                                                                      |   0%
+  |                                                                            
+  |====                                                                  |   6%
+  |                                                                            
+  |=========                                                             |  12%
+  |                                                                            
+  |=============                                                         |  19%
+  |                                                                            
+  |==================                                                    |  25%
+  |                                                                            
+  |======================                                                |  31%
+  |                                                                            
+  |==========================                                            |  38%
+  |                                                                            
+  |===============================                                       |  44%
+  |                                                                            
+  |===================================                                   |  50%
+  |                                                                            
+  |=======================================                               |  56%
+  |                                                                            
+  |============================================                          |  62%
+  |                                                                            
+  |================================================                      |  69%
+  |                                                                            
+  |====================================================                  |  75%
+  |                                                                            
+  |=========================================================             |  81%
+  |                                                                            
+  |=============================================================         |  88%
+  |                                                                            
+  |==================================================================    |  94%
+  |                                                                            
+  |======================================================================| 100%</code></pre>
+</div>
+</div>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
