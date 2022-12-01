@@ -1,7 +1,7 @@
 ---
 title: "Class 05: Data Visualization with GGPLOT"
 author: "Nicholas Pacia"
-format: pdf
+format: gfm
 ---
 
 #Our first ggplot ggplot2 package must be downloaded to computer first
