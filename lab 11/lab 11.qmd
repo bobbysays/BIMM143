@@ -1,7 +1,7 @@
 ---
 title: "Lab 11"
 author: "Nicholas Pacia"
-format: pdf
+format: gfm
 ---
 
 # Section 4 Population Scale Analysis

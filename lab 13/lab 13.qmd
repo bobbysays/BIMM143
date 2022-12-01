@@ -1,7 +1,7 @@
 ---
 title: "lab 13"
 author: "Nicholas Pacia"
-format: pdf
+format: gfm
 ---
 # Differential Expression Analysis
 

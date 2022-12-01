@@ -1,6 +1,6 @@
 ---
 title: "lab15"
-format: pdf
+format: gfm
 ---
 
 ```{r}

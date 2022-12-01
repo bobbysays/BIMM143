@@ -1,7 +1,7 @@
 ---
 title: "lab9"
 author: "Nicholas Pacia"
-format: pdf
+format: gfm
 ---
 
 ## RCSB Protein Data Bank
