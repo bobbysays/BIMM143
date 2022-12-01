@@ -1,8 +1,6 @@
 # BIMM143
 UC Socially Dead (UC San Diego)
 
-Hello World!
+Here is a portfolio of my work for [BIMM143](https://bioboot.github.io/bimm143_F22/).
 
-test
-
-12/1/22 test
+- Class 10: [Halloween Candy Mini-Project]()
