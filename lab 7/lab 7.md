@@ -36,16 +36,16 @@ km
 
     Cluster means:
             tmp          
-    1 -3.079781  2.847135
-    2  2.847135 -3.079781
+    1 -3.153084  3.050292
+    2  3.050292 -3.153084
 
     Clustering vector:
      [1] 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2
     [39] 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2
 
     Within cluster sum of squares by cluster:
-    [1] 74.11301 74.11301
-     (between_SS / total_SS =  87.7 %)
+    [1] 40.32346 40.32346
+     (between_SS / total_SS =  93.5 %)
 
     Available components:
 
@@ -57,8 +57,8 @@ km$centers
 ```
 
             tmp          
-    1 -3.079781  2.847135
-    2  2.847135 -3.079781
+    1 -3.153084  3.050292
+    2  3.050292 -3.153084
 
 > Q. How many points are in each cluster? Q. What ‘component’ of your
 > result object details -cluster assignment/membership? -cluster center?
@@ -81,8 +81,8 @@ km$centers #returns the value of the center of cluster
 ```
 
             tmp          
-    1 -3.079781  2.847135
-    2  2.847135 -3.079781
+    1 -3.153084  3.050292
+    2  3.050292 -3.153084
 
 > Q. Plot x colored by kmeans cluster assignment and add cluster centers
 > as blue points
